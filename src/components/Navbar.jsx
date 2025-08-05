@@ -14,11 +14,12 @@ const Navbar = () => {
   ];
 
   return (
-    <motion.div
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+
       <AppBar
         position="sticky"
         elevation={0}
