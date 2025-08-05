@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import emailjs from '@emailjs/browser';
 import { 
   Box, 
   Typography, 
@@ -44,26 +45,39 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Here you would typically send the form data to your backend
-      // For demo purposes, we'll simulate a successful submission
-      setSnackbarMessage('Message sent successfully!');
-      setSnackbarSeverity('success');
-      setOpenSnackbar(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      setSnackbarMessage('Failed to send message. Please try again.');
-      setSnackbarSeverity('error');
-      setOpenSnackbar(true);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await emailjs.send(
+      'service_4nhgvfp',              // Your Service ID
+      'template_d0fb5hd',              // Your Template ID
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+      'PqJnGXlkwi12-Ih8w'                  // Your Public Key
+    );
+
+    setSnackbarMessage('Message sent successfully!');
+    setSnackbarSeverity('success');
+    setOpenSnackbar(true);
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  } catch (error) {
+    console.error('EmailJS Error:', error);
+    setSnackbarMessage('Failed to send message. Please try again.');
+    setSnackbarSeverity('error');
+    setOpenSnackbar(true);
+  }
+};
+
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
