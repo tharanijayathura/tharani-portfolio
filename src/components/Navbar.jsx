@@ -1,93 +1,107 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, Divider } from '@mui/material';
-import { GitHub, LinkedIn, LightMode, DarkMode } from '@mui/icons-material';
-import { useTheme } from '../hooks/useTheme';
+// ✅ Cleaned and Polished Navbar.jsx (No numbers, softer link color)
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Divider,
+  useMediaQuery,
+} from '@mui/material';
+import {
+  GitHub,
+  LinkedIn,
+  LightMode,
+  DarkMode,
+  Menu,
+  Close,
+} from '@mui/icons-material';
+
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
+  
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width:900px)');
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    setScrolled(latest > 10);
+  });
+
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Work', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
 
-  return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      >
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-      <AppBar
-        position="sticky"
-        elevation={0}
+  return (
+    <AppBar
+      position="fixed"
+      elevation={0}
+      sx={{
+        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        backgroundColor: scrolled ? 'rgba(10, 25, 47, 0.85)' : 'transparent',
+        transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
+        borderBottom: scrolled ? '1px solid rgba(100, 255, 218, 0.1)' : 'none',
+        py: 1,
+      }}
+    >
+      <Toolbar
         sx={{
-          backdropFilter: 'blur(10px)',
-          background: 'linear-gradient(90deg, rgba(10,25,47,0.95) 0%, rgba(21,101,192,0.85) 100%)',
-          borderBottom: '1px solid rgba(100, 255, 218, 0.2)',
-          py: 1,
+          maxWidth: '1200px',
+          mx: 'auto',
+          width: '100%',
+          px: { xs: 2, md: 4 },
+          justifyContent: 'space-between',
         }}
       >
-        <Toolbar sx={{ 
-          maxWidth: 'lg', 
-          mx: 'auto', 
-          width: '100%',
-          px: { xs: 3, md: 6 },
-          justifyContent: 'space-between',
-          gap: 4
-        }}>
-          {/* Name with more spacing */}
-          <Box sx={{ flex: 1, minWidth: 180 }}>
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{
-                  fontWeight: 'bold',
-                  background: 'linear-gradient(90deg, #64ffda, #90caf9)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  whiteSpace: 'nowrap',
-                  fontSize: { xs: '1.2rem', sm: '1.3rem' },
-                  letterSpacing: '0.05em',
-                  cursor: 'pointer',
-                }}
-              >
-                Tharani Jayathura
-              </Typography>
-            </motion.div>
-          </Box>
+        {/* Logo */}
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Typography
+            variant="h6"
+            component="a"
+            href="#home"
+            sx={{
+              fontWeight: 'bold',
+              background: 'linear-gradient(90deg, #64ffda, #90caf9)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: { xs: '1.3rem', sm: '1.5rem' },
+              letterSpacing: '0.05em',
+              textDecoration: 'none',
+            }}
+          >
+            Tharani Jayathura
+          </Typography>
+        </motion.div>
 
-          {/* Navigation items with proper spacing */}
-          <Box sx={{ 
-            display: { xs: 'none', md: 'flex' }, 
-            alignItems: 'center',
-            flex: 2,
-            justifyContent: 'center',
-            gap: 1
-          }}>
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {navItems.map((item, index) => (
-              <motion.div 
-                key={index} 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <motion.div key={index} whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   href={item.href}
                   sx={{
-                    color: '#e1eaff',
-                    fontWeight: 'medium',
+                    color: '#cfd8dc',
+                    fontWeight: 400,
                     fontSize: '0.95rem',
                     textTransform: 'none',
                     minWidth: 'unset',
-                    px: 2.5,
-                    py: 1,
-                    borderRadius: 2,
+                    px: 1.5,
+                    py: 0.5,
                     '&:hover': {
-                      background: 'rgba(100, 255, 218, 0.1)',
                       color: '#64ffda',
+                      background: 'transparent',
                     },
                   }}
                 >
@@ -95,81 +109,155 @@ const Navbar = () => {
                 </Button>
               </motion.div>
             ))}
-          </Box>
 
-          {/* Icons with spacing */}
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center',
-            flex: 1,
-            justifyContent: 'flex-end',
-            gap: 1,
-            minWidth: 120
-          }}>
-            <Divider 
-              orientation="vertical" 
-              flexItem 
-              sx={{ 
-                height: 28, 
-                borderColor: 'rgba(100, 255, 218, 0.3)',
-                display: { xs: 'none', sm: 'block' } 
-              }} 
+            <Divider
+              orientation="vertical"
+              flexItem
+              sx={{ height: 24, borderColor: 'rgba(100, 255, 218, 0.3)', mx: 1 }}
             />
 
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <IconButton 
-                href="https://github.com/tharanijayathura" 
-                target="_blank" 
-                sx={{ 
-                  color: '#e1eaff',
-                  '&:hover': { 
-                    color: '#64ffda',
-                    background: 'rgba(100, 255, 218, 0.1)',
-                  },
-                }}
-              >
-                <GitHub fontSize="small" />
-              </IconButton>
-            </motion.div>
+            <IconButton
+              href="https://github.com/tharanijayathura"
+              target="_blank"
+              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+            >
+              <GitHub fontSize="small" />
+            </IconButton>
 
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <IconButton 
-                href="https://www.linkedin.com/in/tharani-jayathura-96235226b/" 
-                target="_blank"
-                sx={{ 
-                  color: '#e1eaff',
-                  '&:hover': { 
-                    color: '#64ffda',
-                    background: 'rgba(100, 255, 218, 0.1)',
-                  },
-                }}
-              >
-                <LinkedIn fontSize="small" />
-              </IconButton>
-            </motion.div>
+            <IconButton
+              href="https://www.linkedin.com/in/tharani-jayathura-96235226b/"
+              target="_blank"
+              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+            >
+              <LinkedIn fontSize="small" />
+            </IconButton>
 
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <IconButton 
-                onClick={toggleTheme} 
-                sx={{ 
-                  color: '#e1eaff',
-                  '&:hover': { 
-                    color: '#64ffda',
-                    background: 'rgba(100, 255, 218, 0.1)',
-                  },
-                }}
-              >
-                {theme === 'dark' ? (
-                  <LightMode fontSize="small" />
-                ) : (
-                  <DarkMode fontSize="small" />
-                )}
-              </IconButton>
-            </motion.div>
+
+            <Button
+              variant="outlined"
+              href="/resume.pdf"
+              target="_blank"
+              sx={{
+                ml: 2,
+                color: '#64ffda',
+                borderColor: '#64ffda',
+                '&:hover': {
+                  backgroundColor: 'rgba(100, 255, 218, 0.1)',
+                  borderColor: '#64ffda',
+                },
+              }}
+            >
+              Resume
+            </Button>
           </Box>
-        </Toolbar>
-      </AppBar>
-    </motion.div>
+        )}
+
+        {/* Mobile Navigation */}
+        {isMobile && (
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerToggle}
+              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+            >
+              {mobileOpen ? <Close /> : <Menu />}
+            </IconButton>
+
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{
+                opacity: mobileOpen ? 1 : 0,
+                x: mobileOpen ? 0 : '100%',
+                display: mobileOpen ? 'block' : 'none',
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                width: 'min(75vw, 400px)',
+                height: '100vh',
+                backgroundColor: 'rgba(10, 25, 47, 0.95)',
+                backdropFilter: 'blur(10px)',
+                padding: '2rem',
+                zIndex: 999,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                boxShadow: '-10px 0px 30px -15px rgba(2, 12, 27, 0.7)',
+              }}
+            >
+              <Box
+                component="nav"
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                  gap: 2,
+                  mb: 4,
+                }}
+              >
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: mobileOpen ? 0 : 20, opacity: mobileOpen ? 1 : 0 }}
+                    transition={{ delay: index * 0.1, type: 'spring', stiffness: 300 }}
+                  >
+                    <Button
+                      href={item.href}
+                      onClick={handleDrawerToggle}
+                      sx={{
+                        color: '#cfd8dc',
+                        fontSize: '1.1rem',
+                        justifyContent: 'flex-end',
+                        '&:hover': { color: '#64ffda' },
+                      }}
+                    >
+                      {item.name}
+                    </Button>
+                  </motion.div>
+                ))}
+              </Box>
+
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 4 }}>
+                <IconButton href="https://github.com/tharanijayathura" target="_blank" sx={{ color: '#cfd8dc' }}>
+                  <GitHub />
+                </IconButton>
+                <IconButton
+                  href="https://www.linkedin.com/in/tharani-jayathura-96235226b/"
+                  target="_blank"
+                  sx={{ color: '#cfd8dc' }}
+                >
+                  <LinkedIn />
+                </IconButton>
+                <IconButton onClick={toggleTheme} sx={{ color: '#cfd8dc' }}>
+                  {theme === 'dark' ? <LightMode /> : <DarkMode />}
+                </IconButton>
+              </Box>
+
+              <Button
+                variant="outlined"
+                href="/resume.pdf"
+                target="_blank"
+                fullWidth
+                sx={{
+                  color: '#64ffda',
+                  borderColor: '#64ffda',
+                  '&:hover': {
+                    backgroundColor: 'rgba(100, 255, 218, 0.1)',
+                  },
+                }}
+              >
+                Resume
+              </Button>
+            </motion.div>
+          </>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 

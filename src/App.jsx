@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import Navbar from './components/Navbar';
@@ -7,12 +6,11 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import getTheme from './theme';
-import { useTheme } from './hooks/useTheme';
 
 function App() {
-  const { theme: mode } = useTheme(); // 'light' or 'dark'
-  const theme = getTheme(mode); // Create MUI theme with selected mode
+  const theme = getTheme(); // No need to toggle theme
 
   return (
     <ThemeProvider theme={theme}>
@@ -23,6 +21,7 @@ function App() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </ThemeProvider>
   );
 }

@@ -1,51 +1,72 @@
-// src/theme.js
 import { createTheme } from '@mui/material/styles';
 
-const getTheme = (mode) =>
+const getTheme = () =>
   createTheme({
     palette: {
-      mode,
+      mode: 'dark',
       primary: {
-        main: '#3f51b5',
+        main: '#64ffda',
+        contrastText: '#0a192f',
       },
       secondary: {
-        main: '#f50057',
+        main: '#26c6da',
       },
-      ...(mode === 'light'
-        ? {
-            background: {
-              default: '#f5f5f5',
-              paper: '#ffffff',
-            },
-            text: {
-              primary: '#212121',
-              secondary: '#757575',
-            },
-          }
-        : {
-            background: {
-              default: '#121212',
-              paper: '#1e1e1e',
-            },
-            text: {
-              primary: '#ffffff',
-              secondary: '#aaaaaa',
-            },
-          }),
+      background: {
+        default: '#0a192f',
+        paper: '#1e2a3a',
+      },
+      text: {
+        primary: '#ffffff',
+        secondary: '#b3c0d0',
+      },
+      gradient: {
+        primary: 'linear-gradient(135deg, #64ffda 0%, #2196f3 100%)',
+        secondary: 'linear-gradient(135deg, #0a192f 0%, #1e2a3a 100%)',
+      },
     },
+
     typography: {
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system, sans-serif',
       h1: {
-        fontWeight: 700,
-        fontSize: '2.5rem',
+        fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+        fontWeight: 800,
+        lineHeight: 1.2,
+        letterSpacing: '-0.05em',
       },
       h2: {
-        fontWeight: 600,
-        fontSize: '2rem',
+        fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+        fontWeight: 700,
+        lineHeight: 1.3,
       },
       h3: {
-        fontWeight: 500,
-        fontSize: '1.75rem',
+        fontSize: 'clamp(1.5rem, 2.5vw, 1.8rem)',
+        fontWeight: 600,
+      },
+      body1: {
+        fontSize: '1.1rem',
+        lineHeight: 1.6,
+      },
+    },
+
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: '4px',
+            textTransform: 'none',
+            fontWeight: 600,
+            letterSpacing: '0.05em',
+            transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: 'none',
+            transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
+          },
+        },
       },
     },
   });
