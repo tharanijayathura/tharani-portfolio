@@ -233,9 +233,6 @@ const Navbar = () => {
                 >
                   <LinkedIn />
                 </IconButton>
-                <IconButton onClick={toggleTheme} sx={{ color: '#cfd8dc' }}>
-                  {theme === 'dark' ? <LightMode /> : <DarkMode />}
-                </IconButton>
               </Box>
 
               <Button
