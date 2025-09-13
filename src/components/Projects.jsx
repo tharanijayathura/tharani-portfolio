@@ -10,14 +10,14 @@ import { GitHub, OpenInNew, ArrowRightAlt } from '@mui/icons-material';
 const projects = [
   {
     title: "Visitor Management System",
-    description: "A comprehensive MERN stack application for tracking and managing visitor entries with real-time notifications, QR code check-ins, and detailed reporting capabilities for enhanced security and administrative oversight.",
+    description: "A full-stack web system (React.js, Node.js/Express.js, MongoDB) that streamlines visitor management with online pre-registration, host approvals, and automated email confirmations. Security staff verify check-in/out via unique codes, while admins manage visitor logs, reports, and analytics (live stats, peak hours, feedback). Role-based access ensures security, efficiency, and accountability across the university.",
     technologies: ["React", "Node.js", "MongoDB", "Express", "JWT", "Socket.IO"],
-    link: "https://github.com/tharanijayathura/vms",
+    link: "https://github.com/ThisaraJayasooriya/UoM-VMS-frontend.git",
     demo: "https://vms-demo.com",
     image: "/images/image.png"
   },
   {
-    title: "E-commerce Platform",
+    title: "School Management System",
     description: "Feature-rich Laravel e-commerce solution with product management, shopping cart, payment gateway integration, and admin dashboard for complete business operations management.",
     technologies: ["Laravel", "MySQL", "Bootstrap", "jQuery", "Stripe API"],
     link: "https://github.com/tharanijayathura/ecommerce",
@@ -145,7 +145,7 @@ const Projects = () => {
                       sx={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover',
+                        objectFit: 'contain',
                         transition: 'transform 0.5s ease',
                         '&:hover': {
                           transform: 'scale(1.05)',

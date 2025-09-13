@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Box, Typography, Button, Container, useTheme } from '@mui/material';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Hero = () => {
   const theme = useTheme();
@@ -116,33 +117,33 @@ const Hero = () => {
           </Typography>
 
           <Typography
-            variant="h2"
-            component={motion.h2}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            sx={{
-              color: theme.palette.text.secondary,
-              fontWeight: 700,
-              mb: 3,
-            }}
-          >
-            <TypeAnimation
-              sequence={[
-                'I build things for the web.',
-                1500,
-                'I develop full-stack applications.',
-                1500,
-                'I create modern user interfaces.',
-                1500,
-                'I solve complex problems.',
-                1500,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </Typography>
+  variant="h2"
+  component={motion.h2}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.4 }}
+  sx={{
+    color: theme.palette.text.secondary,
+    fontWeight: 700,
+    mb: 3,
+  }}
+>
+  <Typewriter
+    words={[
+      'I build things for the web.',
+      'I develop full-stack applications.',
+      'I create modern user interfaces.',
+      'I solve complex problems.',
+    ]}
+    loop={0}             // play once; use Infinity to loop forever
+    cursor
+    cursorStyle="|"
+    typeSpeed={50}       // typing speed
+    deleteSpeed={5}     // speed at which previous text disappears
+    delaySpeed={1500}    // pause before next phrase
+  />
+</Typography>
+
 
           <Typography
             component={motion.p}

@@ -4,11 +4,11 @@ import { useInView } from 'react-intersection-observer';
 import {
   Box,
   Typography,
-  Grid,
   Paper,
   Divider,
   Container,
   LinearProgress,
+  Stack,
   useTheme
 } from '@mui/material';
 import {
@@ -21,7 +21,7 @@ import {
 
 const Skills = () => {
   const theme = useTheme();
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
 
   const skills = [
     { name: "JavaScript", category: "Frontend", level: 90 },
@@ -37,21 +37,16 @@ const Skills = () => {
     { name: "Docker", category: "DevOps", level: 65 },
   ];
 
-  const categories = [...new Set(skills.map(skill => skill.category))];
-
-  const getIcon = (category) => {
-    switch(category) {
-      case 'Frontend': return <Code sx={{ color: theme.palette.primary.main }} />;
-      case 'Backend': return <Terminal sx={{ color: theme.palette.primary.main }} />;
-      case 'Database': return <Storage sx={{ color: theme.palette.primary.main }} />;
-      case 'Design': return <DesignServices sx={{ color: theme.palette.primary.main }} />;
-      case 'DevOps': return <Cloud sx={{ color: theme.palette.primary.main }} />;
-      default: return null;
-    }
-  };
+  const categories = [
+    { key: 'Frontend', icon: <Code sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'Backend',  icon: <Terminal sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'Database', icon: <Storage sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'Design',   icon: <DesignServices sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'DevOps',   icon: <Cloud sx={{ color: theme.palette.primary.main }} /> },
+  ];
 
   const variants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 28 },
     visible: { opacity: 1, y: 0 },
   };
 
@@ -60,14 +55,18 @@ const Skills = () => {
       id="skills"
       ref={ref}
       sx={{
-        py: { xs: 8, md: 12 },
+        // give breathing room after About
+        pt: { xs: 6, md: 8 },
+        pb: { xs: 8, md: 12 },
         background: theme.palette.gradient.secondary,
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        scrollMarginTop: '84px',
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
+        {/* Title */}
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
           <Typography
             variant="h2"
             component={motion.h2}
@@ -80,8 +79,10 @@ const Skills = () => {
               background: theme.palette.gradient.primary,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              fontWeight: 'bold',
-              mb: 2,
+              fontWeight: 800,
+              letterSpacing: 0.3,
+              mb: 1.5,
+              fontSize: { xs: '1.9rem', md: '2.2rem' },
             }}
           >
             My Skills
@@ -92,64 +93,85 @@ const Skills = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={variants}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
             sx={{
-              width: 80,
-              height: 4,
+              width: 88,
+              height: 3,
               mx: 'auto',
               background: theme.palette.primary.main,
               borderRadius: 2,
+              mb: 1.5
             }}
           />
+
+          {/* Subheading */}
+          <Typography
+            component={motion.p}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={variants}
+            transition={{ delay: 0.18, duration: 0.5 }}
+            sx={{ color: theme.palette.text.secondary, maxWidth: 760, mx: 'auto' }}
+          >
+            What I work with across the stack — from clean, accessible UIs to reliable backends and deployment.
+          </Typography>
         </Box>
 
-        <Grid container spacing={4}>
-          {categories.map((category, catIndex) => (
-            <Grid item xs={12} md={6} key={catIndex}>
-              <motion.div
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                variants={variants}
-                transition={{ delay: 0.3 + catIndex * 0.1, duration: 0.6 }}
+        {/* Auto-fit card grid */}
+        <Box
+          component={motion.div}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={variants}
+          transition={{ delay: 0.25, duration: 0.6 }}
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: { xs: 16, md: 20 }, // px units acceptable via sx numeric: theme.spacing
+            // convert to spacing scale for consistency:
+            // but to keep it simple, use '1.25rem' values
+            columnGap: { xs: '1.25rem', md: '1.5rem' },
+            rowGap: { xs: '1.25rem', md: '1.5rem' },
+          }}
+        >
+          {categories.map((cat, idx) => {
+            const list = skills.filter(s => s.category === cat.key);
+            return (
+              <Paper
+                key={cat.key}
+                elevation={0}
+                sx={{
+                  height: '100%',
+                  p: { xs: 3, md: 4 },
+                  backgroundColor: theme.palette.background.paper,
+                  color: theme.palette.text.primary,
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: 3,
+                  border: '1px solid rgba(100, 255, 218, 0.12)',
+                  boxShadow: '0 8px 28px rgba(0, 0, 0, 0.20)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'transform .25s ease, box-shadow .25s ease',
+                  '&:hover': {
+                    transform: 'translateY(-6px)',
+                    boxShadow: '0 16px 44px rgba(25, 118, 210, 0.28)',
+                  },
+                }}
               >
-                <Paper
-                  elevation={0}
-                  sx={{
-                    p: { xs: 3, md: 4 },
-                    backgroundColor: theme.palette.background.paper,
-                    color: theme.palette.text.primary,
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: 4,
-                    border: '1px solid rgba(100, 255, 218, 0.1)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 12px 40px rgba(25, 118, 210, 0.3)',
-                    }
-                  }}
-                >
-                  <Typography
-                    variant="h5"
-                    gutterBottom
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      color: theme.palette.primary.main,
-                      mb: 3,
-                      fontWeight: 'medium'
-                    }}
-                  >
-                    {getIcon(category)}
-                    <Box component="span" sx={{ ml: 2 }}>{category}</Box>
+                {/* Card header */}
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
+                  {cat.icon}
+                  <Typography variant="h6" sx={{ color: theme.palette.primary.main, fontWeight: 700 }}>
+                    {cat.key}
                   </Typography>
+                </Stack>
 
-                  {skills.filter(skill => skill.category === category).map((skill, i) => (
-                    <Box key={i} sx={{ mb: 2 }}>
+                {/* Skills list */}
+                <Box sx={{ display: 'grid', rowGap: 1.25 }}>
+                  {list.map((skill) => (
+                    <Box key={skill.name}>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 0.5 }}>
-                        <Typography variant="body2">
-                          {skill.name}
-                        </Typography>
+                        <Typography variant="body2">{skill.name}</Typography>
                         <Typography variant="body2" sx={{ color: theme.palette.primary.main }}>
                           {skill.level}%
                         </Typography>
@@ -164,16 +186,16 @@ const Skills = () => {
                           '& .MuiLinearProgress-bar': {
                             borderRadius: 3,
                             background: theme.palette.gradient.primary,
-                          }
+                          },
                         }}
                       />
                     </Box>
                   ))}
-                </Paper>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+                </Box>
+              </Paper>
+            );
+          })}
+        </Box>
       </Container>
     </Box>
   );
