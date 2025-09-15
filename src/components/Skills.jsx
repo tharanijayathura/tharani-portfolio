@@ -67,22 +67,22 @@ const Skills = () => {
       <Container maxWidth="lg">
         {/* Title */}
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
-          <Typography
+           <Typography
             variant="h2"
             component={motion.h2}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={variants}
+            animate="visible"
+            variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
             sx={{
-              display: 'inline-block',
-              background: theme.palette.gradient.primary,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontWeight: 800,
-              letterSpacing: 0.3,
-              mb: 1.5,
-              fontSize: { xs: '1.9rem', md: '2.2rem' },
+              display: "inline-block",
+              background: "linear-gradient(90deg, #64ffda, #90caf9)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontWeight: "bold",
+              fontFamily:
+                '"Calibre","Inter","San Francisco","SF Pro Text",-apple-system,sans-serif',
+              mb: 2
             }}
           >
             My Skills
@@ -134,7 +134,7 @@ const Skills = () => {
             rowGap: { xs: '1.25rem', md: '1.5rem' },
           }}
         >
-          {categories.map((cat, idx) => {
+          {categories.map((cat) => {
             const list = skills.filter(s => s.category === cat.key);
             return (
               <Paper

@@ -30,7 +30,7 @@ const projects = [
     technologies: ["Arduino and sensor integration"],
     link: "https://www.linkedin.com/posts/tharani-jayathura-96235226b_automated-liquid-dispensing-machine-activity-7371569228782563328-7pZf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIUu9oB0hgHg09wDIieTv564EN9ZCibxvA",
     demo: "https://youtube.com/shorts/501CNpDux3g?si=e7Q4mdIZYPvM7nLB",
-    image: "images/Untitled design (4).png"
+    image: "images/harware pro.png"
   },
   {
     title: "Tiny Ocean Explorer (Ongoing)",
@@ -38,7 +38,7 @@ const projects = [
     technologies: ["Unity 2D (C#)", "ASP.NET Core 8 (Minimal API)", "EF Core/SQLite→Postgres", "Git/LFS"],
     link: "https://github.com/tharanijayathura/TinyOceanExplorer",
     demo: "https://taskmanager-demo.com",
-    image: "/images/vector-illustration-cartoon-cute-sea-600nw-2397457845.webp"
+    image: "images/fish.webp"
   },
   {
     title: "Art-Mart (Ongoing)",
@@ -48,6 +48,14 @@ const projects = [
     demo: "https://weather-demo.com",
     image: "images/ChatGPT Image Sep 15, 2025, 10_09_26 AM.png"
   },
+    {
+    title: "Jayathura LifeCare (Ongoing)",
+    description: "A web-based system designed to digitize pharmacy services for Sri Lanka. The platform enables patients to upload prescriptions, order OTC medicines, and track deliveries in real time. Pharmacists can verify prescriptions, manage stock, generate bills, and notify patients if medicines are unavailable. Admins oversee users, delivery settings, and reports. Features include chronic patient auto-refill reminders, optional audio dosage instructions, and dual notifications (in-app + email)",
+    technologies: ["React.js", "Node.js/Express.js", "MongoDB", "REST APIs", "JWT Authentication", "Cloud Storage", "Email/SMS Notification APIs", "Payment Gateway Integration"],
+    link: "https://github.com/tharanijayathura/artmart",
+    demo: "https://weather-demo.com",
+    image: "images/lifecare.png"
+  }
 ];
 
 const Projects = () => {

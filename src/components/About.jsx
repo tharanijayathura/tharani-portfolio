@@ -48,19 +48,21 @@ const About = () => {
         {/* Title */}
         <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
           <Typography
+            variant="h2"
             component={motion.h2}
-            variants={fadeUp}
             initial="hidden"
-            animate={inView ? 'show' : 'hidden'}
+            animate="visible"
+            variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.6 }}
             sx={{
-              fontWeight: 800,
-              letterSpacing: 0.3,
-              fontSize: { xs: '2rem', md: '2.4rem' },
-              background: 'linear-gradient(90deg, #64ffda, #90caf9)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              mb: 1,
+              display: "inline-block",
+              background: "linear-gradient(90deg, #64ffda, #90caf9)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              fontWeight: "bold",
+              fontFamily:
+                '"Calibre","Inter","San Francisco","SF Pro Text",-apple-system,sans-serif',
+              mb: 2
             }}
           >
             About Me
