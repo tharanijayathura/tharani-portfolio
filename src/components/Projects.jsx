@@ -13,32 +13,40 @@ const projects = [
     description: "A full-stack web system (React.js, Node.js/Express.js, MongoDB) that streamlines visitor management with online pre-registration, host approvals, and automated email confirmations. Security staff verify check-in/out via unique codes, while admins manage visitor logs, reports, and analytics (live stats, peak hours, feedback). Role-based access ensures security, efficiency, and accountability across the university.",
     technologies: ["React", "Node.js", "MongoDB", "Express", "JWT", "Socket.IO"],
     link: "https://github.com/ThisaraJayasooriya/UoM-VMS-frontend.git",
-    demo: "https://vms-demo.com",
+    demo: " https://lnkd.in/gVxRae8T",
     image: "/images/image.png"
   },
   {
     title: "School Management System",
-    description: "Feature-rich Laravel e-commerce solution with product management, shopping cart, payment gateway integration, and admin dashboard for complete business operations management.",
+    description: " School Management System to manage students, teachers, and courses.Managed student and teacher records and course information with a CRUD-based system.Implemented database integration with MySQL and backend logic using PHP (Laravel).Focused on building a functional and easy-to-use application.",
     technologies: ["Laravel", "MySQL", "Bootstrap", "jQuery", "Stripe API"],
-    link: "https://github.com/tharanijayathura/ecommerce",
+    link: "https://github.com/tharanijayathura/myfirstapp.git",
     demo: "https://ecommerce-demo.com",
-    image: "/images/ecommerce-screenshot.jpg"
+    image: "/images/1.PNG"
+  },
+    {
+    title: "Automated Liquid Despenser-Hardware Project",
+    description: "The system allows a user to place a liquid gallon on a tray, enter the desired amount, and have the machine automatically dispense the liquid.Sensors detect the gallon’s position, and the dispensing arm adjusts accordingly.The system calculates the dispensed volume and generates a bill automatically.",
+    technologies: ["Arduino and sensor integration"],
+    link: "https://www.linkedin.com/posts/tharani-jayathura-96235226b_automated-liquid-dispensing-machine-activity-7371569228782563328-7pZf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEIUu9oB0hgHg09wDIieTv564EN9ZCibxvA",
+    demo: "https://youtube.com/shorts/501CNpDux3g?si=e7Q4mdIZYPvM7nLB",
+    image: "images/Untitled design (4).png"
   },
   {
-    title: "Task Management App",
-    description: "Productivity application built with React and Firebase for real-time task management, team collaboration, and progress tracking with drag-and-drop functionality.",
-    technologies: ["React", "Firebase", "Material-UI", "Redux"],
-    link: "https://github.com/tharanijayathura/task-manager",
+    title: "Tiny Ocean Explorer (Ongoing)",
+    description: "a 2D stealth-survival game where you’re a tiny fish collecting pebbles while evading sharks using speed, noise-based stealth, and hiding spots. Built in Unity (WebGL) with a .NET 8 backend for online leaderboards.",
+    technologies: ["Unity 2D (C#)", "ASP.NET Core 8 (Minimal API)", "EF Core/SQLite→Postgres", "Git/LFS"],
+    link: "https://github.com/tharanijayathura/TinyOceanExplorer",
     demo: "https://taskmanager-demo.com",
-    image: "/images/taskmanager-screenshot.jpg"
+    image: "/images/vector-illustration-cartoon-cute-sea-600nw-2397457845.webp"
   },
   {
-    title: "Weather Dashboard",
-    description: "Interactive weather application providing current conditions and forecasts using data from the OpenWeather API with location detection and historical data visualization.",
-    technologies: ["JavaScript", "OpenWeather API", "Chart.js", "Geolocation API"],
-    link: "https://github.com/tharanijayathura/weather-app",
+    title: "Art-Mart (Ongoing)",
+    description: "Art-Mart is a modern e-commerce platform designed for showcasing and selling unique artworks, handmade crafts, and creative products. Built with a sleek, minimal design using .NET Core + React/MUI, the platform makes it easy for customers to browse, filter, and purchase items while giving artists and gallery owners the tools to manage their collections.",
+    technologies: ["React", "Next.js", "TypeScript", "MUI (Material UI)","ASP.NET Core Web API", "C#", "SQL Server", "Entity Framework Core"],
+    link: "https://github.com/tharanijayathura/artmart",
     demo: "https://weather-demo.com",
-    image: "/images/weather-screenshot.jpg"
+    image: "images/ChatGPT Image Sep 15, 2025, 10_09_26 AM.png"
   },
 ];
 

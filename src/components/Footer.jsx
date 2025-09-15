@@ -33,7 +33,7 @@ const Footer = () => {
           <LinkedIn fontSize="small" />
         </IconButton>
         <IconButton 
-          href="mailto:tharani@example.com" 
+          href="tharanijayathura1@gmail.com" 
           aria-label="Email"
           sx={{ color: '#8892b0', '&:hover': { color: '#64ffda' } }}
         >

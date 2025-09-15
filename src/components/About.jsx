@@ -169,7 +169,7 @@ const About = () => {
                     <Typography fontWeight={700} color="#90caf9">Education</Typography>
                   </Stack>
                   <Typography variant="body2" color="#cfd8dc" sx={{ pl: 4 }}>
-                    BSc in IT <br /> University of Moratuwa
+                    BSc in IT & Management <br /> University of Moratuwa
                   </Typography>
                 </Stack>
 
