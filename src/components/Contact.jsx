@@ -267,117 +267,158 @@ const Contact = () => {
               </Typography>
 
               <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      name="name"
-                      label="Your Name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      variant="outlined"
-                      required
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
-                          '&:hover fieldset': { borderColor: '#64ffda' },
-                          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
-                        },
-                        '& .MuiInputLabel-root': { color: '#8892b0' },
-                        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
-                      }}
-                      InputProps={{ style: { color: '#e6f1ff' } }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      name="email"
-                      label="Your Email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      variant="outlined"
-                      required
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
-                          '&:hover fieldset': { borderColor: '#64ffda' },
-                          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
-                        },
-                        '& .MuiInputLabel-root': { color: '#8892b0' },
-                        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
-                      }}
-                      InputProps={{ style: { color: '#e6f1ff' } }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      name="subject"
-                      label="Subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      variant="outlined"
-                      required
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
-                          '&:hover fieldset': { borderColor: '#64ffda' },
-                          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
-                        },
-                        '& .MuiInputLabel-root': { color: '#8892b0' },
-                        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
-                      }}
-                      InputProps={{ style: { color: '#e6f1ff' } }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      name="message"
-                      label="Message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      variant="outlined"
-                      multiline
-                      rows={6}
-                      required
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
-                          '&:hover fieldset': { borderColor: '#64ffda' },
-                          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
-                        },
-                        '& .MuiInputLabel-root': { color: '#8892b0' },
-                        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
-                      }}
-                      InputProps={{ style: { color: '#e6f1ff' } }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      size="large"
-                      endIcon={<SendIcon />}
-                      sx={{
-                        mt: 1,
-                        background: 'linear-gradient(90deg, #1976d2, #64ffda)',
-                        color: '#0a192f',
-                        fontWeight: 800,
-                        py: 1.4,
-                        px: 3,
-                        '&:hover': {
-                          background: 'linear-gradient(90deg, #1565c0, #52d7c7)',
-                          boxShadow: '0 0 20px rgba(100, 255, 218, 0.3)',
-                        },
-                      }}
-                    >
-                      Send Message
-                    </Button>
-                  </Grid>
-                </Grid>
+<Grid container spacing={2}>
+  {/* Name */}
+  <Grid item xs={12}>
+    <TextField
+      fullWidth
+      name="name"
+      label="Your Name"
+      value={formData.name}
+      onChange={handleChange}
+      variant="outlined"
+      required
+      size="small"
+      sx={{
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
+          '&:hover fieldset': { borderColor: '#64ffda' },
+          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
+        },
+        '& .MuiInputLabel-root': { color: '#8892b0' },
+        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
+      }}
+      InputProps={{
+        sx: {
+          color: '#e6f1ff',
+          height: 44, // uniform height for single-line fields
+          '& .MuiInputBase-input': { padding: '10px 14px', fontSize: '0.95rem' },
+        },
+      }}
+    />
+  </Grid>
+
+  {/* Email */}
+  <Grid item xs={12}>
+    <TextField
+      fullWidth
+      name="email"
+      label="Your Email"
+      type="email"
+      value={formData.email}
+      onChange={handleChange}
+      variant="outlined"
+      required
+      size="small"
+      sx={{
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
+          '&:hover fieldset': { borderColor: '#64ffda' },
+          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
+        },
+        '& .MuiInputLabel-root': { color: '#8892b0' },
+        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
+      }}
+      InputProps={{
+        sx: {
+          color: '#e6f1ff',
+          height: 44,
+          '& .MuiInputBase-input': { padding: '10px 14px', fontSize: '0.95rem' },
+        },
+      }}
+    />
+  </Grid>
+
+  {/* Subject */}
+  <Grid item xs={12}>
+    <TextField
+      fullWidth
+      name="subject"
+      label="Subject"
+      value={formData.subject}
+      onChange={handleChange}
+      variant="outlined"
+      required
+      size="small"
+      sx={{
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
+          '&:hover fieldset': { borderColor: '#64ffda' },
+          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
+        },
+        '& .MuiInputLabel-root': { color: '#8892b0' },
+        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
+      }}
+      InputProps={{
+        sx: {
+          color: '#e6f1ff',
+          height: 44,
+          '& .MuiInputBase-input': { padding: '10px 14px', fontSize: '0.95rem' },
+        },
+      }}
+    />
+  </Grid>
+
+  {/* Message (fixed height, no auto-grow) */}
+  <Grid item xs={12}>
+    <TextField
+      fullWidth
+      name="message"
+      label="Message"
+      value={formData.message}
+      onChange={handleChange}
+      variant="outlined"
+      multiline
+      rows={6}
+      maxRows={6} // lock height
+      required
+      sx={{
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': { borderColor: 'rgba(100, 255, 218, 0.3)' },
+          '&:hover fieldset': { borderColor: '#64ffda' },
+          '&.Mui-focused fieldset': { borderColor: '#64ffda' },
+        },
+        '& .MuiInputLabel-root': { color: '#8892b0' },
+        '& .MuiInputLabel-root.Mui-focused': { color: '#64ffda' },
+      }}
+      InputProps={{
+        sx: {
+          color: '#e6f1ff',
+          '& textarea': {
+            fontSize: '1.05rem',
+            lineHeight: 1.6,
+            resize: 'none',     // prevent manual resize
+            overflow: 'auto',   // enable scroll inside instead of growing
+          },
+        },
+      }}
+    />
+  </Grid>
+
+  <Grid item xs={12}>
+    <Button
+      type="submit"
+      variant="contained"
+      size="large"
+      endIcon={<SendIcon />}
+      sx={{
+        mt: 1,
+        background: 'linear-gradient(90deg, #1976d2, #64ffda)',
+        color: '#0a192f',
+        fontWeight: 800,
+        py: 1.4,
+        px: 3,
+        '&:hover': {
+          background: 'linear-gradient(90deg, #1565c0, #52d7c7)',
+          boxShadow: '0 0 20px rgba(100, 255, 218, 0.3)',
+        },
+      }}
+    >
+      Send Message
+    </Button>
+  </Grid>
+</Grid>
+
               </Box>
             </Paper>
           </Box>

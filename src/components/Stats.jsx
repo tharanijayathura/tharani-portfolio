@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -9,6 +9,8 @@ import {
   Avatar,
   Divider,
   Chip,
+  Button,
+  Collapse,
 } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -71,6 +73,8 @@ const cardSx = {
 };
 
 export default function ExtraActivities() {
+  const [open, setOpen] = useState(false);
+
   const variants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
   return (
@@ -83,7 +87,7 @@ export default function ExtraActivities() {
       }}
     >
       <Container maxWidth="lg">
-        {/* Heading */}
+        {/* Heading + Toggle */}
         <Box sx={{ textAlign: "center", mb: 3 }}>
           <Typography
             variant="h2"
@@ -105,6 +109,7 @@ export default function ExtraActivities() {
           >
             Hobbies & Interests
           </Typography>
+
           <Divider
             component={motion.div}
             initial="hidden"
@@ -117,63 +122,78 @@ export default function ExtraActivities() {
               mx: "auto",
               background: "linear-gradient(90deg, #64ffda, #90caf9)",
               borderRadius: 2,
-              mb: 8, 
+              mb: 3,
             }}
           />
+
+          <Button
+            variant="contained"
+            onClick={() => setOpen((prev) => !prev)}
+            sx={{
+              bgcolor: "#64ffda",
+              color: "#0a192f",
+              fontWeight: 700,
+              px: 3,
+              "&:hover": { bgcolor: "#52e0c4" },
+            }}
+          >
+            {open ? "Hide Hobbies" : "Show Hobbies & Interests"}
+          </Button>
         </Box>
 
-        {/* Grid */}
-        <Grid container spacing={3} justifyContent="center">
-          {activities.map((a) => (
-            <Grid key={a.id} item xs={12} sm={6} md={4}>
-              <Paper elevation={0} sx={cardSx}>
-                <Stack spacing={1.5} alignItems="center" textAlign="center">
-                  {a.photo && (
-                    <Avatar
-                      variant="rounded"
-                      src={a.photo}
-                      alt={a.title}
-                      sx={{
-                        width: "100%",
-                        height: 180,
-                        borderRadius: 2,
-                        border: "1px solid rgba(144,202,249,.25)",
-                        mb: 0.5,
-                      }}
-                    />
-                  )}
-                  <Typography variant="h6" sx={{ color: "#e6f1ff", fontWeight: 700 }}>
-                    {a.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ opacity: 0.85 }}>
-                    {a.sub}
-                  </Typography>
-
-                  {/* fun tags */}
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    flexWrap="wrap"
-                    justifyContent="center"
-                  >
-                    {(a.tags || []).map((t) => (
-                      <Chip
-                        key={t}
-                        label={t}
-                        size="small"
+        {/* Collapsible content */}
+        <Collapse in={open} timeout={400} unmountOnExit>
+          <Grid container spacing={3} justifyContent="center" sx={{ mt: 1 }}>
+            {activities.map((a) => (
+              <Grid key={a.id} item xs={12} sm={6} md={4}>
+                <Paper elevation={0} sx={cardSx}>
+                  <Stack spacing={1.5} alignItems="center" textAlign="center">
+                    {a.photo && (
+                      <Avatar
+                        variant="rounded"
+                        src={a.photo}
+                        alt={a.title}
                         sx={{
-                          bgcolor: "rgba(100,255,218,.08)",
-                          color: "#a7ffeb",
-                          border: "1px solid rgba(100,255,218,.30)",
+                          width: "100%",
+                          height: 180,
+                          borderRadius: 2,
+                          border: "1px solid rgba(144,202,249,.25)",
+                          mb: 0.5,
                         }}
                       />
-                    ))}
+                    )}
+                    <Typography variant="h6" sx={{ color: "#e6f1ff", fontWeight: 700 }}>
+                      {a.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ opacity: 0.85 }}>
+                      {a.sub}
+                    </Typography>
+
+                    <Stack
+                      direction="row"
+                      spacing={1}
+                      flexWrap="wrap"
+                      justifyContent="center"
+                    >
+                      {(a.tags || []).map((t) => (
+                        <Chip
+                          key={t}
+                          label={t}
+                          size="small"
+                          sx={{
+                            bgcolor: "rgba(100,255,218,.08)",
+                            color: "#a7ffeb",
+                            border: "1px solid rgba(100,255,218,.30)",
+                          }}
+                        />
+                      ))}
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </Collapse>
       </Container>
     </Box>
   );
