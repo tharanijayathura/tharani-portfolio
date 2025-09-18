@@ -46,14 +46,14 @@ const projects = [
     technologies: ["React", "Next.js", "TypeScript", "MUI (Material UI)","ASP.NET Core Web API", "C#", "SQL Server", "Entity Framework Core"],
     link: "https://github.com/tharanijayathura/artmart",
     demo: "https://weather-demo.com",
-    image: "images/ChatGPT Image Sep 15, 2025, 10_09_26 AM.png"
+    image: "https://oma-online.org/wp-content/uploads/2023/11/Untitled-design-54.png"
   },
     {
     title: "Jayathura LifeCare (Ongoing)",
     description: "A web-based system designed to digitize pharmacy services for Sri Lanka. The platform enables patients to upload prescriptions, order OTC medicines, and track deliveries in real time. Pharmacists can verify prescriptions, manage stock, generate bills, and notify patients if medicines are unavailable. Admins oversee users, delivery settings, and reports. Features include chronic patient auto-refill reminders, optional audio dosage instructions, and dual notifications (in-app + email)",
     technologies: ["React.js", "Node.js/Express.js", "MongoDB", "REST APIs", "JWT Authentication", "Cloud Storage", "Email/SMS Notification APIs", "Payment Gateway Integration"],
-    link: "https://github.com/tharanijayathura/artmart",
-    demo: "https://weather-demo.com",
+    link: "https://github.com/tharanijayathura/abc",
+    demo: "https://ifecare-demo.com",
     image: "images/lifecare.png"
   }
 ];
