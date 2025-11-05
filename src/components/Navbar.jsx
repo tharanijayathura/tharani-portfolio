@@ -237,7 +237,7 @@ const Navbar = () => {
 
               <Button
                 variant="outlined"
-                href="public\resume.pdf"
+                href="public\images\CV.pdf"
                 target="_blank"
                 fullWidth
                 sx={{

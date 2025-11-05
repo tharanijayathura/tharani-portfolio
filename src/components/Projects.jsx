@@ -33,28 +33,28 @@ const projects = [
     image: "images/harware pro.png"
   },
   {
-    title: "Tiny Ocean Explorer (Ongoing)",
-    description: "a 2D stealth-survival game where you’re a tiny fish collecting pebbles while evading sharks using speed, noise-based stealth, and hiding spots. Built in Unity (WebGL) with a .NET 8 backend for online leaderboards.",
-    technologies: ["Unity 2D (C#)", "ASP.NET Core 8 (Minimal API)", "EF Core/SQLite→Postgres", "Git/LFS"],
-    link: "https://github.com/tharanijayathura/TinyOceanExplorer",
-    demo: "https://taskmanager-demo.com",
-    image: "images/fish.webp"
+    title: "Smart Kitchen-AI-Powered Kitchen Management System (Ongoing)",
+    description: "Developed a full-stack application reducing household food waste through AI-powered inventory tracking, recipe suggestions, and automated meal planning. Integrated OpenAI API for intelligent recommendations and implemented real-time expiry alerts.",
+    technologies: ["React", "TypeScript", "Material-UI", "Spring Boot", "PostgreSQL", "OpenAI API", "JWT Authentication,", "REST APIs"],
+    link: "https://github.com/tharanijayathura/Kitchen-Assistant",
+    demo: "https://github.com/tharanijayathura/Kitchen-Assistant",
+    image: "public/images/kitchen.PNG"
   },
   {
-    title: "Art-Mart (Ongoing)",
-    description: "Art-Mart is a modern e-commerce platform designed for showcasing and selling unique artworks, handmade crafts, and creative products. Built with a sleek, minimal design using .NET Core + React/MUI, the platform makes it easy for customers to browse, filter, and purchase items while giving artists and gallery owners the tools to manage their collections.",
-    technologies: ["React", "Next.js", "TypeScript", "MUI (Material UI)","ASP.NET Core Web API", "C#", "SQL Server", "Entity Framework Core"],
-    link: "https://github.com/tharanijayathura/artmart",
-    demo: "https://weather-demo.com",
-    image: "https://oma-online.org/wp-content/uploads/2023/11/Untitled-design-54.png"
+    title: "GameStore Web App (Ongoing)",
+    description: "Blazor-based game collection manager with animated UI and full CRUD operations. Features include game categorization, search/filter, user authentication, and responsive design for seamless browsing and management of game libraries.",
+    technologies: ["Blazor", ".NET 9.0", "C#", "CSS3", "Bootstrap"],
+    link: "https://github.com/tharanijayathura/GameStore-Blazor",
+    demo: "https://github.com/tharanijayathura/GameStore-Blazor",
+    image: "public/images/gamestore.png"
   },
     {
     title: "Jayathura LifeCare (Ongoing)",
     description: "A web-based system designed to digitize pharmacy services for Sri Lanka. The platform enables patients to upload prescriptions, order OTC medicines, and track deliveries in real time. Pharmacists can verify prescriptions, manage stock, generate bills, and notify patients if medicines are unavailable. Admins oversee users, delivery settings, and reports. Features include chronic patient auto-refill reminders, optional audio dosage instructions, and dual notifications (in-app + email)",
     technologies: ["React.js", "Node.js/Express.js", "MongoDB", "REST APIs", "JWT Authentication", "Cloud Storage", "Email/SMS Notification APIs", "Payment Gateway Integration"],
-    link: "https://github.com/tharanijayathura/abc",
+    link: "https://github.com/tharanijayathura/jayathura-lifecare",
     demo: "https://ifecare-demo.com",
-    image: "images/lifecare.png"
+    image: "public/images/pharmacy.png"
   }
 ];
 
