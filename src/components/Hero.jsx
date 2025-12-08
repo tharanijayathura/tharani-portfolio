@@ -46,7 +46,9 @@ const Hero = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.6))',
+          background: theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.6))'
+            : 'linear-gradient(135deg, rgba(245, 247, 250, 0.85), rgba(232, 236, 241, 0.7))',
           zIndex: 1,
         }}
       />

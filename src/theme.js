@@ -1,27 +1,29 @@
 import { createTheme } from '@mui/material/styles';
 
-const getTheme = () =>
+const getTheme = (mode = 'dark') =>
   createTheme({
     palette: {
-      mode: 'dark',
+      mode: mode,
       primary: {
         main: '#64ffda',
-        contrastText: '#0a192f',
+        contrastText: mode === 'dark' ? '#0a192f' : '#ffffff',
       },
       secondary: {
         main: '#26c6da',
       },
       background: {
-        default: '#0a192f',
-        paper: '#1e2a3a',
+        default: mode === 'dark' ? '#0a192f' : '#f5f7fa',
+        paper: mode === 'dark' ? '#1e2a3a' : '#ffffff',
       },
       text: {
-        primary: '#ffffff',
-        secondary: '#b3c0d0',
+        primary: mode === 'dark' ? '#ffffff' : '#1a1a1a',
+        secondary: mode === 'dark' ? '#b3c0d0' : '#4a5568',
       },
       gradient: {
         primary: 'linear-gradient(135deg, #64ffda 0%, #2196f3 100%)',
-        secondary: 'linear-gradient(135deg, #0a192f 0%, #1e2a3a 100%)',
+        secondary: mode === 'dark' 
+          ? 'linear-gradient(135deg, #0a192f 0%, #1e2a3a 100%)'
+          : 'linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%)',
       },
     },
 

@@ -1,5 +1,5 @@
 // ✅ Cleaned and Polished Navbar.jsx (No numbers, softer link color)
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import {
   AppBar,
@@ -14,14 +14,14 @@ import {
 import {
   GitHub,
   LinkedIn,
-  LightMode,
-  DarkMode,
   Menu,
   Close,
+  LightMode,
+  DarkMode,
 } from '@mui/icons-material';
 
 
-const Navbar = () => {
+const Navbar = ({ mode, toggleTheme }) => {
   
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -34,8 +34,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Work', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Achievements', href: '#awards' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -49,9 +50,11 @@ const Navbar = () => {
       elevation={0}
       sx={{
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        backgroundColor: scrolled ? 'rgba(10, 25, 47, 0.85)' : 'transparent',
+        backgroundColor: scrolled 
+          ? (mode === 'dark' ? 'rgba(10, 25, 47, 0.85)' : 'rgba(255, 255, 255, 0.85)')
+          : 'transparent',
         transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
-        borderBottom: scrolled ? '1px solid rgba(100, 255, 218, 0.1)' : 'none',
+        borderBottom: scrolled ? `1px solid ${mode === 'dark' ? 'rgba(100, 255, 218, 0.1)' : 'rgba(100, 255, 218, 0.2)'}` : 'none',
         py: 1,
       }}
     >
@@ -132,6 +135,20 @@ const Navbar = () => {
               <LinkedIn fontSize="small" />
             </IconButton>
 
+            <IconButton
+              onClick={toggleTheme}
+              sx={{ 
+                color: '#cfd8dc', 
+                '&:hover': { 
+                  color: '#64ffda',
+                  transform: 'rotate(180deg)',
+                },
+                transition: 'all 0.3s ease',
+              }}
+              aria-label="Toggle theme"
+            >
+              {mode === 'dark' ? <LightMode fontSize="small" /> : <DarkMode fontSize="small" />}
+            </IconButton>
 
             <Button
               variant="outlined"
@@ -223,21 +240,35 @@ const Navbar = () => {
               </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 4 }}>
-                <IconButton href="https://github.com/tharanijayathura" target="_blank" sx={{ color: '#cfd8dc' }}>
+                <IconButton href="https://github.com/tharanijayathura" target="_blank" sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}>
                   <GitHub />
                 </IconButton>
                 <IconButton
                   href="https://www.linkedin.com/in/tharani-jayathura-96235226b/"
                   target="_blank"
-                  sx={{ color: '#cfd8dc' }}
+                  sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
                 >
                   <LinkedIn />
+                </IconButton>
+                <IconButton
+                  onClick={toggleTheme}
+                  sx={{ 
+                    color: '#cfd8dc', 
+                    '&:hover': { 
+                      color: '#64ffda',
+                      transform: 'rotate(180deg)',
+                    },
+                    transition: 'all 0.3s ease',
+                  }}
+                  aria-label="Toggle theme"
+                >
+                  {mode === 'dark' ? <LightMode /> : <DarkMode />}
                 </IconButton>
               </Box>
 
               <Button
                 variant="outlined"
-                href="public\images\CV.pdf"
+                href="/resume.pdf"
                 target="_blank"
                 fullWidth
                 sx={{

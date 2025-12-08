@@ -1,16 +1,20 @@
 import React from 'react';
-import { Box, Typography, IconButton, Link } from '@mui/material';
+import { Box, Typography, IconButton, Link, useTheme } from '@mui/material';
 import { GitHub, LinkedIn, Email } from '@mui/icons-material';
 
 const Footer = () => {
+  const theme = useTheme();
+  
   return (
     <Box
       component="footer"
       sx={{
         py: 3,
         px: 2,
-        backgroundColor: 'rgba(10, 25, 47, 0.9)',
-        borderTop: '1px solid rgba(100, 255, 218, 0.1)',
+        backgroundColor: theme.palette.mode === 'dark' 
+          ? 'rgba(10, 25, 47, 0.9)' 
+          : 'rgba(245, 247, 250, 0.9)',
+        borderTop: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(100, 255, 218, 0.1)' : 'rgba(100, 255, 218, 0.2)'}`,
         textAlign: 'center'
       }}
     >
@@ -20,7 +24,7 @@ const Footer = () => {
           href="https://github.com/tharanijayathura" 
           target="_blank"
           aria-label="GitHub"
-          sx={{ color: '#8892b0', '&:hover': { color: '#64ffda' } }}
+          sx={{ color: theme.palette.text.secondary, '&:hover': { color: theme.palette.primary.main } }}
         >
           <GitHub fontSize="small" />
         </IconButton>
@@ -28,14 +32,14 @@ const Footer = () => {
           href="https://linkedin.com/in/tharani-jayathura-96235226b/" 
           target="_blank"
           aria-label="LinkedIn"
-          sx={{ color: '#8892b0', '&:hover': { color: '#64ffda' } }}
+          sx={{ color: theme.palette.text.secondary, '&:hover': { color: theme.palette.primary.main } }}
         >
           <LinkedIn fontSize="small" />
         </IconButton>
         <IconButton 
-          href="tharanijayathura1@gmail.com" 
+          href="mailto:tharanijayathura1@gmail.com" 
           aria-label="Email"
-          sx={{ color: '#8892b0', '&:hover': { color: '#64ffda' } }}
+          sx={{ color: theme.palette.text.secondary, '&:hover': { color: theme.palette.primary.main } }}
         >
           <Email fontSize="small" />
         </IconButton>
@@ -45,7 +49,7 @@ const Footer = () => {
       <Typography 
         variant="body2" 
         sx={{ 
-          color: '#8892b0',
+          color: theme.palette.text.secondary,
           fontSize: '0.8rem'
         }}
       >

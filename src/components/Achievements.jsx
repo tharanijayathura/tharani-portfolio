@@ -71,6 +71,15 @@ const awards = [
     place: "",
     photo: "images/udemy cer.PNG",
   },
+  {
+    id: "a7",
+    title: "Player of the Series - Women's Category",
+    org: "Fit Sixes 2K25",
+    year: "2025",
+    category: "Sports — Cricket",
+    place: "🏆",
+    photo: "images/fit-sixes.jpg",
+  },
 ];
 
 const cardSx = {
@@ -161,46 +170,120 @@ export default function Awards() {
         </Box>
 
         {/* Collapsible content */}
-        <Collapse in={open} timeout={400} unmountOnExit>
+        <Collapse in={open} timeout={600} unmountOnExit>
           <Grid container spacing={3} justifyContent="center" sx={{ mt: 1 }}>
-            {awards.map((a) => (
+            {awards.map((a, index) => (
               <Grid key={a.id} item xs={12} sm={6} md={4}>
-                <Paper elevation={0} sx={cardSx}>
-                  <Stack spacing={1.5}>
-                    <Avatar
-                      variant="rounded"
-                      src={a.photo}
-                      alt={a.title}
-                      sx={{
-                        width: "100%",
-                        height: 160,
-                        borderRadius: 2,
-                        border: "1px solid rgba(144,202,249,.25)",
-                      }}
-                    />
-                    <Stack direction="row" spacing={1} alignItems="center">
-                      <EmojiEventsIcon sx={{ color: "#64ffda" }} />
-                      <Typography
-                        variant="subtitle1"
-                        sx={{ fontWeight: 700, color: "#e6f1ff" }}
+                <motion.div
+                  initial="hidden"
+                  animate={open ? "visible" : "hidden"}
+                  variants={{
+                    hidden: { opacity: 0, y: 30, scale: 0.9 },
+                    visible: { opacity: 1, y: 0, scale: 1 }
+                  }}
+                  transition={{ 
+                    delay: index * 0.1, 
+                    duration: 0.5,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  style={{ height: '100%' }}
+                >
+                  <Paper 
+                    elevation={0} 
+                    sx={{
+                      ...cardSx,
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <Stack spacing={1.5} sx={{ height: '100%' }}>
+                      <Box sx={{ position: 'relative', overflow: 'hidden', borderRadius: 2 }}>
+                        <Avatar
+                          variant="rounded"
+                          src={a.photo}
+                          alt={a.title}
+                          sx={{
+                            width: "100%",
+                            height: { xs: 180, sm: 200 },
+                            borderRadius: 2,
+                            border: "2px solid rgba(144,202,249,.3)",
+                            transition: 'transform 0.4s ease',
+                            '&:hover': {
+                              transform: 'scale(1.05)',
+                            },
+                          }}
+                        />
+                        {a.place && (
+                          <Box
+                            sx={{
+                              position: 'absolute',
+                              top: 8,
+                              right: 8,
+                              fontSize: '2rem',
+                              filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
+                            }}
+                          >
+                            {a.place}
+                          </Box>
+                        )}
+                      </Box>
+                      <Stack direction="row" spacing={1} alignItems="flex-start">
+                        <EmojiEventsIcon sx={{ color: "#64ffda", mt: 0.5 }} />
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ 
+                            fontWeight: 700, 
+                            color: "#e6f1ff",
+                            fontSize: { xs: '0.95rem', sm: '1rem' },
+                            lineHeight: 1.3,
+                          }}
+                        >
+                          {a.title}
+                        </Typography>
+                      </Stack>
+                      <Typography 
+                        sx={{ 
+                          opacity: 0.9,
+                          fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                          fontWeight: 500,
+                        }}
                       >
-                        {a.title}
+                        {a.org}
                       </Typography>
+                      <Typography 
+                        sx={{ 
+                          opacity: 0.7,
+                          fontSize: { xs: '0.8rem', sm: '0.85rem' },
+                        }}
+                      >
+                        {a.year}
+                      </Typography>
+                      <Box sx={{ mt: 'auto' }}>
+                        <Chip
+                          label={`${a.category}${a.place && !a.place.includes('🏆') ? ` • ${a.place}` : ""}`}
+                          size="small"
+                          sx={{
+                            bgcolor: "rgba(100,255,218,.12)",
+                            color: "#a7ffeb",
+                            border: "1px solid rgba(100,255,218,.35)",
+                            alignSelf: "flex-start",
+                            fontWeight: 600,
+                            fontSize: { xs: '0.7rem', sm: '0.75rem' },
+                            '&:hover': {
+                              bgcolor: "rgba(100,255,218,.2)",
+                              borderColor: "rgba(100,255,218,.5)",
+                            },
+                            transition: 'all 0.3s ease',
+                          }}
+                        />
+                      </Box>
                     </Stack>
-                    <Typography sx={{ opacity: 0.9 }}>{a.org}</Typography>
-                    <Typography sx={{ opacity: 0.7 }}>{a.year}</Typography>
-                    <Chip
-                      label={`${a.category}${a.place ? ` • ${a.place}` : ""}`}
-                      size="small"
-                      sx={{
-                        bgcolor: "rgba(100,255,218,.08)",
-                        color: "#a7ffeb",
-                        border: "1px solid rgba(100,255,218,.30)",
-                        alignSelf: "flex-start",
-                      }}
-                    />
-                  </Stack>
-                </Paper>
+                  </Paper>
+                </motion.div>
               </Grid>
             ))}
           </Grid>
