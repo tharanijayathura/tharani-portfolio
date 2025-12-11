@@ -21,6 +21,7 @@ import {
 } from '@mui/icons-material';
 
 
+const MotionDiv = motion.div; // Reuse single motion.div reference to appease lint rule
 const Navbar = ({ mode, toggleTheme }) => {
   
   const [scrolled, setScrolled] = useState(false);
@@ -68,7 +69,7 @@ const Navbar = ({ mode, toggleTheme }) => {
         }}
       >
         {/* Logo */}
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <MotionDiv whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Typography
             variant="h6"
             component="a"
@@ -85,13 +86,13 @@ const Navbar = ({ mode, toggleTheme }) => {
           >
             Tharani Jayathura
           </Typography>
-        </motion.div>
+        </MotionDiv>
 
         {/* Desktop Navigation */}
         {!isMobile && (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {navItems.map((item, index) => (
-              <motion.div key={index} whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}>
+              <MotionDiv key={index} whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   href={item.href}
                   sx={{
@@ -110,7 +111,7 @@ const Navbar = ({ mode, toggleTheme }) => {
                 >
                   {item.name}
                 </Button>
-              </motion.div>
+                </MotionDiv>
             ))}
 
             <Divider
@@ -182,7 +183,7 @@ const Navbar = ({ mode, toggleTheme }) => {
               {mobileOpen ? <Close /> : <Menu />}
             </IconButton>
 
-            <motion.div
+            <MotionDiv
               initial={{ opacity: 0, x: '100%' }}
               animate={{
                 opacity: mobileOpen ? 1 : 0,
@@ -217,7 +218,7 @@ const Navbar = ({ mode, toggleTheme }) => {
                 }}
               >
                 {navItems.map((item, index) => (
-                  <motion.div
+                  <MotionDiv
                     key={index}
                     initial={{ x: 20, opacity: 0 }}
                     animate={{ x: mobileOpen ? 0 : 20, opacity: mobileOpen ? 1 : 0 }}
@@ -235,7 +236,7 @@ const Navbar = ({ mode, toggleTheme }) => {
                     >
                       {item.name}
                     </Button>
-                  </motion.div>
+                    </MotionDiv>
                 ))}
               </Box>
 
@@ -281,7 +282,7 @@ const Navbar = ({ mode, toggleTheme }) => {
               >
                 Resume
               </Button>
-            </motion.div>
+            </MotionDiv>
           </>
         )}
       </Toolbar>
