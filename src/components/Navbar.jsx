@@ -155,8 +155,8 @@ const Navbar = ({ mode, toggleTheme }) => {
 
             <Button
               variant="outlined"
-              href="/resume.pdf"
-              target="_blank"
+              href="/images/resume.pdf"
+              download="Tharani_Jayathura_Resume.pdf"
               sx={{
                 ml: 2,
                 color: theme.palette.primary.main,
@@ -271,8 +271,8 @@ const Navbar = ({ mode, toggleTheme }) => {
 
               <Button
                 variant="outlined"
-                href="/resume.pdf"
-                target="_blank"
+                href="/images/resume.pdf"
+                download="Tharani_Jayathura_Resume.pdf"
                 fullWidth
                 sx={{
                   color: theme.palette.primary.main,

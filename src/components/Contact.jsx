@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import emailjs from '@emailjs/browser';
 import { 
   Box, 
   Typography, 
@@ -47,29 +46,19 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await emailjs.send(
-        'service_4nhgvfp',
-        'template_d0fb5hd',
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        },
-        'PqJnGXlkwi12-Ih8w'
-      );
-
-      setSnackbarMessage('Message sent successfully!');
-      setSnackbarSeverity('success');
-      setOpenSnackbar(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSnackbarMessage('Failed to send message. Please try again.');
-      setSnackbarSeverity('error');
-      setOpenSnackbar(true);
-    }
+    
+    // Create WhatsApp message
+    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/94712599785?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
+    
+    setSnackbarMessage('Redirecting to WhatsApp...');
+    setSnackbarSeverity('success');
+    setOpenSnackbar(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   const handleCloseSnackbar = () => setOpenSnackbar(false);

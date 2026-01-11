@@ -83,11 +83,14 @@ const projects = [
 const Projects = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [showAll, setShowAll] = React.useState(false);
 
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true
   });
+
+  const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
   const variants = {
     hidden: { opacity: 0, y: 50 },
@@ -142,7 +145,7 @@ const Projects = () => {
         </Box>
 
         <Grid container spacing={4}>
-          {projects.map((project, index) => {
+          {displayedProjects.map((project, index) => {
             const getTypeIcon = () => {
               if (project.type === "Mobile App") return <PhoneAndroid sx={{ fontSize: 18 }} />;
               if (project.type === "Hardware Project") return <Build sx={{ fontSize: 18 }} />;
@@ -470,6 +473,48 @@ const Projects = () => {
             );
           })}
         </Grid>
+
+        {!showAll && projects.length > 4 && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                onClick={() => setShowAll(true)}
+                variant="contained"
+                sx={{
+                  background: theme.palette.mode === 'dark'
+                    ? 'rgba(10, 25, 47, 0.7)'
+                    : 'rgba(255, 255, 255, 0.2)',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${theme.palette.primary.main}66`,
+                  color: theme.palette.primary.main,
+                  fontWeight: 700,
+                  px: 5,
+                  py: 1.8,
+                  fontSize: '1rem',
+                  borderRadius: 3,
+                  boxShadow: `0 8px 32px ${theme.palette.primary.main}33`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    background: theme.palette.mode === 'dark'
+                      ? 'rgba(10, 25, 47, 0.85)'
+                      : 'rgba(255, 255, 255, 0.3)',
+                    boxShadow: `0 12px 40px ${theme.palette.primary.main}55`,
+                    border: `1px solid ${theme.palette.primary.main}`,
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                See More Projects ({projects.length - 4}+)
+              </Button>
+            </motion.div>
+          </Box>
+        )}
       </Container>
     </Box>
   );

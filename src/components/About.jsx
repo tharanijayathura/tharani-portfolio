@@ -83,12 +83,12 @@ const About = () => {
           sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: '5fr 7fr' },
-            gap: { xs: 4, md: 6 },
+            gap: { xs: 3, sm: 4, md: 6 },
             alignItems: 'center',
           }}
         >
-          {/* Image block (LEFT) */}
-          <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+          {/* Image block (LEFT on desktop, SECOND on mobile) */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', order: { xs: 2, md: 1 } }}>
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -122,18 +122,18 @@ const About = () => {
             </motion.div>
           </Box>
 
-          {/* Text card (RIGHT) */}
+          {/* Text card (RIGHT on desktop, FIRST on mobile) */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate={inView ? 'show' : 'hidden'}
             transition={{ delay: 0.2, duration: 0.6 }}
-            style={{ width: '100%' }}
+            style={{ width: '100%', order: 1 }}
           >
             <Paper
               elevation={0}
               sx={{
-                p: { xs: 3, md: 4 },
+                p: { xs: 2.5, sm: 3, md: 4 },
                 backgroundColor: 'rgba(12, 28, 48, 0.88)',
                 border: '1px solid rgba(100, 255, 218, 0.15)',
                 borderRadius: 3,
@@ -152,8 +152,8 @@ const About = () => {
                 I'm Tharani Jayathura
               </Typography>
               <Typography variant="body1" sx={{ color: '#cfd8dc', lineHeight: 1.75, mb: 3, maxWidth: 720 }}>
-                Passionate IT undergraduate at the University of Moratuwa, focused on building
-                accessible, human‑centered products with clean code and strong UX.
+                I’m an IT undergraduate at the University of Moratuwa who loves crafting meaningful digital experiences. 
+                I focus on writing clean, maintainable code while designing products that are intuitive, accessible, and user-friendly
               </Typography>
 
               {/* two mini columns */}
@@ -220,7 +220,7 @@ const About = () => {
               </Stack>
 
               {/* actions */}
-              <Stack direction="row" spacing={2} flexWrap="wrap">
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} flexWrap="wrap" sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 <Button
                   href="#contact"
                   variant="contained"
@@ -228,7 +228,9 @@ const About = () => {
                     background: 'linear-gradient(90deg, #1976d2, #64ffda)',
                     color: '#0a192f',
                     fontWeight: 800,
-                    px: 3.5, py: 1.15,
+                    px: { xs: 2.5, sm: 3.5 },
+                    py: { xs: 1.25, sm: 1.15 },
+                    width: { xs: '100%', sm: 'auto' },
                     '&:hover': {
                       background: 'linear-gradient(90deg, #1565c0, #52d7c7)',
                       boxShadow: '0 0 14px rgba(100,255,218,.35)',
@@ -244,7 +246,9 @@ const About = () => {
                     color: '#64ffda',
                     borderColor: '#64ffda',
                     fontWeight: 700,
-                    px: 3.5, py: 1.15,
+                    px: { xs: 2.5, sm: 3.5 },
+                    py: { xs: 1.25, sm: 1.15 },
+                    width: { xs: '100%', sm: 'auto' },
                     '&:hover': { backgroundColor: 'rgba(100,255,218,.10)' },
                   }}
                 >

@@ -158,14 +158,26 @@ export default function Awards() {
             variant="contained"
             onClick={() => setOpen((prev) => !prev)}
             sx={{
-              bgcolor: "#64ffda",
-              color: "#0a192f",
+              background: 'rgba(10, 25, 47, 0.7)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(100, 255, 218, 0.4)',
+              color: '#64ffda',
               fontWeight: 700,
-              px: 3,
-              "&:hover": { bgcolor: "#52e0c4" },
+              px: 4,
+              py: 1.5,
+              fontSize: '1rem',
+              borderRadius: 3,
+              boxShadow: '0 8px 32px rgba(100, 255, 218, 0.2)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                background: 'rgba(10, 25, 47, 0.85)',
+                boxShadow: '0 12px 40px rgba(100, 255, 218, 0.35)',
+                border: '1px solid rgba(100, 255, 218, 0.6)',
+                transform: 'translateY(-2px)',
+              },
             }}
           >
-            {open ? "Hide Awards" : "Show Awards & Certifications"}
+            {open ? "Hide Awards" : "See Awards & Certifications"}
           </Button>
         </Box>
 

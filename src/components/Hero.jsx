@@ -257,6 +257,8 @@ const Hero = () => {
             component="img"
             src="/images/DSC_8895.JPG"
             alt="Tharani Jayathura portrait"
+            loading="eager"
+            fetchpriority="high"
             sx={{
               width: '100%',
               height: '100%',
