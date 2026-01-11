@@ -160,7 +160,7 @@ const Hero = () => {
               lineHeight: 1.6,
             }}
           >
-            I'm a software engineer specializing in building exceptional digital experiences. Currently, I'm focused on building accessible, human-centered products at University of Moratuwa.
+            I’m an IT undergraduate at the University of Moratuwa who loves crafting meaningful digital experiences. I focus on writing clean, maintainable code while designing products that are intuitive, accessible, and user-friendly.
           </Typography>
 
           <Box

@@ -152,8 +152,11 @@ const About = () => {
                 I'm Tharani Jayathura
               </Typography>
               <Typography variant="body1" sx={{ color: '#cfd8dc', lineHeight: 1.75, mb: 3, maxWidth: 720 }}>
-                I’m an IT undergraduate at the University of Moratuwa who loves crafting meaningful digital experiences. 
-                I focus on writing clean, maintainable code while designing products that are intuitive, accessible, and user-friendly
+                I’m an IT undergraduate at the University of Moratuwa who enjoys building modern web applications with a strong focus on usability and performance.
+                 My work combines clean, structured code with human-centered design to create smooth and meaningful user experiences.
+
+                 I’m constantly learning new technologies, improving my problem-solving skills, and exploring better ways to turn ideas into impactful digital solutions.
+                
               </Typography>
 
               {/* two mini columns */}

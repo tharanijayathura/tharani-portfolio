@@ -17,7 +17,9 @@ import {
   Storage,
   DesignServices,
   Cloud,
-  PhoneAndroid
+  PhoneAndroid,
+  BugReport,
+  Layers
 } from '@mui/icons-material';
 
 const Skills = () => {
@@ -27,12 +29,19 @@ const Skills = () => {
   const skills = [
     { name: "JavaScript", category: "Frontend", experience: "Advanced", icon: "⚡" },
     { name: "React", category: "Frontend", experience: "Advanced", icon: "⚛️" },
+    { name: "HTML5", category: "Frontend", experience: "Advanced", icon: "🧡" },
+    { name: "CSS3", category: "Frontend", experience: "Advanced", icon: "💙" },
+    { name: "Material UI", category: "Frontend", experience: "Advanced", icon: "🎯" },
+    { name: "Framer Motion", category: "Frontend", experience: "Advanced", icon: "🎞️" },
+    { name: "Responsive UI Design", category: "Frontend", experience: "Advanced", icon: "📱" },
+    { name: "UX-focused Components", category: "Frontend", experience: "Advanced", icon: "🧭" },
     { name: "React Native", category: "Mobile", experience: "Intermediate", icon: "📱" },
     { name: "TypeScript", category: "Frontend", experience: "Intermediate", icon: "📘" },
     { name: "Node.js", category: "Backend", experience: "Advanced", icon: "🟢" },
     { name: "Express.js", category: "Backend", experience: "Advanced", icon: "🚀" },
     { name: "Python", category: "Backend", experience: "Intermediate", icon: "🐍" },
     { name: "Java", category: "Backend", experience: "Intermediate", icon: "☕" },
+    { name: "C", category: "Backend", experience: "Intermediate", icon: "💻" },
     { name: "Spring Boot", category: "Backend", experience: "Intermediate", icon: "🌱" },
     { name: "MongoDB", category: "Database", experience: "Advanced", icon: "🍃" },
     { name: "PostgreSQL", category: "Database", experience: "Intermediate", icon: "🐘" },
@@ -42,11 +51,22 @@ const Skills = () => {
     { name: "Blazor", category: "Frontend", experience: "Beginner", icon: "💎" },
     { name: ".NET", category: "Backend", experience: "Beginner", icon: "🔷" },
     { name: "Figma", category: "Design", experience: "Intermediate", icon: "🎨" },
+    { name: "Canva", category: "Design", experience: "Intermediate", icon: "🖼️" },
     { name: "AWS", category: "DevOps", experience: "Beginner", icon: "☁️" },
     { name: "Docker", category: "DevOps", experience: "Beginner", icon: "🐳" },
     { name: "Git", category: "Tools", experience: "Advanced", icon: "🔀" },
+    { name: "GitHub", category: "Tools", experience: "Advanced", icon: "🐙" },
+    { name: "Vercel", category: "Tools", experience: "Intermediate", icon: "▲" },
+    { name: "VS Code", category: "Tools", experience: "Advanced", icon: "📝" },
     { name: "REST APIs", category: "Backend", experience: "Advanced", icon: "🌐" },
     { name: "JWT", category: "Backend", experience: "Advanced", icon: "🔐" },
+    { name: "MERN Stack", category: "Full-Stack", experience: "Advanced", icon: "🧩" },
+    { name: "CRUD Operations", category: "Full-Stack", experience: "Advanced", icon: "✏️" },
+    { name: "Role-based Access", category: "Full-Stack", experience: "Advanced", icon: "🛡️" },
+    { name: "Manual Testing", category: "Testing", experience: "Advanced", icon: "🔍" },
+    { name: "Test Case Writing", category: "Testing", experience: "Advanced", icon: "🧾" },
+    { name: "API Testing", category: "Testing", experience: "Advanced", icon: "🧪" },
+    { name: "Postman", category: "Testing", experience: "Advanced", icon: "📬" },
   ];
 
   const categories = [
@@ -56,6 +76,8 @@ const Skills = () => {
     { key: 'Database', icon: <Storage sx={{ color: theme.palette.primary.main }} /> },
     { key: 'Design',   icon: <DesignServices sx={{ color: theme.palette.primary.main }} /> },
     { key: 'DevOps',   icon: <Cloud sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'Full-Stack',   icon: <Layers sx={{ color: theme.palette.primary.main }} /> },
+    { key: 'Testing',   icon: <BugReport sx={{ color: theme.palette.primary.main }} /> },
     { key: 'Tools',   icon: <Terminal sx={{ color: theme.palette.primary.main }} /> },
   ];
 
