@@ -119,17 +119,17 @@ const Hero = () => {
           </Typography>
 
           <Typography
-  variant="h2"
-  component={motion.h2}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.4 }}
-  sx={{
-    color: theme.palette.text.secondary,
-    fontWeight: 700,
-    mb: 3,
-  }}
->
+          variant="h2"
+          component={motion.h2}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          sx={{
+            color: theme.palette.mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary,
+            fontWeight: 700,
+            mb: 3,
+          }}
+        >
   <Typewriter
     words={[
       'I build things for the web.',
@@ -154,7 +154,7 @@ const Hero = () => {
             transition={{ delay: 0.5 }}
             variant="body1"
             sx={{
-              color: theme.palette.text.secondary,
+              color: theme.palette.mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary,
               maxWidth: '600px',
               mb: 4,
               lineHeight: 1.6,
@@ -207,42 +207,65 @@ const Hero = () => {
         {/* Right Profile Image */}
         <Box
           component={motion.div}
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.7 }}
           sx={{
             position: 'relative',
-            width: { xs: '70%', sm: '50%', md: '350px' },
-            height: { xs: '70%', sm: '50%', md: '350px' },
+            width: { xs: '78%', sm: '56%', md: '360px' },
+            height: { xs: '78%', sm: '56%', md: '360px' },
             maxWidth: '100%',
             mt: { xs: 6, md: 0 },
+            borderRadius: '24px',
+            overflow: 'visible',
           }}
         >
           <Box
             sx={{
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              borderRadius: '50%',
+              inset: '-10px',
+              borderRadius: '28px',
               background: theme.palette.gradient.primary,
-              opacity: 0.2,
-              filter: 'blur(30px)',
+              opacity: 0.35,
+              filter: 'blur(18px)',
+              zIndex: -2,
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: '-4px',
+              borderRadius: '26px',
+              background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary?.main || '#90caf9'})`,
+              opacity: 0.9,
+              zIndex: -1,
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              borderRadius: '24px',
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(135deg, rgba(10, 25, 47, 0.55), rgba(10, 25, 47, 0.25))'
+                : 'linear-gradient(135deg, rgba(245, 247, 250, 0.75), rgba(232, 236, 241, 0.55))',
+              filter: 'blur(10px)',
               zIndex: -1,
             }}
           />
           <Box
             component="img"
-            src="/images/pro.jpeg"
-            alt="Profile"
+            src="/images/DSC_8895.JPG"
+            alt="Tharani Jayathura portrait"
             sx={{
               width: '100%',
               height: '100%',
-              borderRadius: '50%',
+              borderRadius: '20px',
               objectFit: 'cover',
-              border: `3px solid ${theme.palette.primary.main}`,
-              boxShadow: `0 0 30px ${theme.palette.primary.main}40`,
+              objectPosition: '50% 40%',
+              border: `2px solid ${theme.palette.primary.main}66`,
+              boxShadow: `0 18px 45px ${theme.palette.primary.main}33`,
+              backgroundColor: theme.palette.mode === 'dark' ? '#0a192f' : '#ffffff',
             }}
           />
         </Box>

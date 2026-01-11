@@ -10,6 +10,7 @@ import {
   IconButton,
   Divider,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import {
   GitHub,
@@ -23,6 +24,7 @@ import {
 
 const MotionDiv = motion.div; // Reuse single motion.div reference to appease lint rule
 const Navbar = ({ mode, toggleTheme }) => {
+  const theme = useTheme();
   
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -96,7 +98,7 @@ const Navbar = ({ mode, toggleTheme }) => {
                 <Button
                   href={item.href}
                   sx={{
-                    color: '#cfd8dc',
+                    color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary,
                     fontWeight: 400,
                     fontSize: '0.95rem',
                     textTransform: 'none',
@@ -104,7 +106,7 @@ const Navbar = ({ mode, toggleTheme }) => {
                     px: 1.5,
                     py: 0.5,
                     '&:hover': {
-                      color: '#64ffda',
+                      color: theme.palette.primary.main,
                       background: 'transparent',
                     },
                   }}
@@ -123,7 +125,7 @@ const Navbar = ({ mode, toggleTheme }) => {
             <IconButton
               href="https://github.com/tharanijayathura"
               target="_blank"
-              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+              sx={{ color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, '&:hover': { color: theme.palette.primary.main } }}
             >
               <GitHub fontSize="small" />
             </IconButton>
@@ -131,7 +133,7 @@ const Navbar = ({ mode, toggleTheme }) => {
             <IconButton
               href="https://www.linkedin.com/in/tharani-jayathura-96235226b/"
               target="_blank"
-              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+              sx={{ color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, '&:hover': { color: theme.palette.primary.main } }}
             >
               <LinkedIn fontSize="small" />
             </IconButton>
@@ -139,9 +141,9 @@ const Navbar = ({ mode, toggleTheme }) => {
             <IconButton
               onClick={toggleTheme}
               sx={{ 
-                color: '#cfd8dc', 
+                color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, 
                 '&:hover': { 
-                  color: '#64ffda',
+                  color: theme.palette.primary.main,
                   transform: 'rotate(180deg)',
                 },
                 transition: 'all 0.3s ease',
@@ -157,11 +159,11 @@ const Navbar = ({ mode, toggleTheme }) => {
               target="_blank"
               sx={{
                 ml: 2,
-                color: '#64ffda',
-                borderColor: '#64ffda',
+                color: theme.palette.primary.main,
+                borderColor: theme.palette.primary.main,
                 '&:hover': {
-                  backgroundColor: 'rgba(100, 255, 218, 0.1)',
-                  borderColor: '#64ffda',
+                  backgroundColor: `${theme.palette.primary.main}1A`,
+                  borderColor: theme.palette.primary.main,
                 },
               }}
             >
@@ -178,7 +180,7 @@ const Navbar = ({ mode, toggleTheme }) => {
               aria-label="open drawer"
               edge="end"
               onClick={handleDrawerToggle}
-              sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+              sx={{ color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, '&:hover': { color: theme.palette.primary.main } }}
             >
               {mobileOpen ? <Close /> : <Menu />}
             </IconButton>
@@ -228,10 +230,10 @@ const Navbar = ({ mode, toggleTheme }) => {
                       href={item.href}
                       onClick={handleDrawerToggle}
                       sx={{
-                        color: '#cfd8dc',
+                        color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary,
                         fontSize: '1.1rem',
                         justifyContent: 'flex-end',
-                        '&:hover': { color: '#64ffda' },
+                        '&:hover': { color: theme.palette.primary.main },
                       }}
                     >
                       {item.name}
@@ -241,22 +243,22 @@ const Navbar = ({ mode, toggleTheme }) => {
               </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 4 }}>
-                <IconButton href="https://github.com/tharanijayathura" target="_blank" sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}>
+                <IconButton href="https://github.com/tharanijayathura" target="_blank" sx={{ color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, '&:hover': { color: theme.palette.primary.main } }}>
                   <GitHub />
                 </IconButton>
                 <IconButton
                   href="https://www.linkedin.com/in/tharani-jayathura-96235226b/"
                   target="_blank"
-                  sx={{ color: '#cfd8dc', '&:hover': { color: '#64ffda' } }}
+                  sx={{ color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, '&:hover': { color: theme.palette.primary.main } }}
                 >
                   <LinkedIn />
                 </IconButton>
                 <IconButton
                   onClick={toggleTheme}
                   sx={{ 
-                    color: '#cfd8dc', 
+                    color: mode === 'dark' ? theme.palette.text.secondary : theme.palette.text.primary, 
                     '&:hover': { 
-                      color: '#64ffda',
+                      color: theme.palette.primary.main,
                       transform: 'rotate(180deg)',
                     },
                     transition: 'all 0.3s ease',
@@ -273,10 +275,10 @@ const Navbar = ({ mode, toggleTheme }) => {
                 target="_blank"
                 fullWidth
                 sx={{
-                  color: '#64ffda',
-                  borderColor: '#64ffda',
+                  color: theme.palette.primary.main,
+                  borderColor: theme.palette.primary.main,
                   '&:hover': {
-                    backgroundColor: 'rgba(100, 255, 218, 0.1)',
+                    backgroundColor: `${theme.palette.primary.main}1A`,
                   },
                 }}
               >
